@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # UploadFile
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
@@ -26,3 +27,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# recipe-book
+>>>>>>> abe2744323ea69307d79b34c2a3c2eca0d0664d0
