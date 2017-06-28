@@ -1,16 +1,41 @@
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { AppRoutingModule, routingComponents } from './app-routing/app-routing.module';
+import { RouterModule }   from '@angular/router';
+import { AppComponent }   from './app.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipeDataService } from './recipe-data/recipe-data.service';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IngredientsComponent } from './add-recipe/ingredients.component';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { EditRecipeDetailComponent } from './edit-recipe-detail/edit-recipe-detail.component';
+import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
+import { DeleteRecipeDetailComponent } from './delete-recipe-detail/delete-recipe-detail.component';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
-import { AppComponent } from './app.component';
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent
+  imports:      [ 
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [ 
+    AppComponent, 
+    routingComponents, 
+    RecipeDetailComponent, 
+    AddRecipeComponent, 
+    IngredientsComponent, 
+    EditRecipeComponent, 
+    EditRecipeDetailComponent, 
+    DeleteRecipeComponent, 
+    DeleteRecipeDetailComponent,
+    FileSelectDirective, 
+    FileDropDirective],
+    bootstrap:    [ AppComponent ],
 })
 export class AppModule { }
+

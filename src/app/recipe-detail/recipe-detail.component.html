@@ -1,0 +1,30 @@
+<h3>Recipe Detail</h3>
+
+	<div class="col-sm-2" style="">
+		<!--Sidebar content-->
+		<!--<select [(ngModel)]="selectedId">
+                 <option *ngFor="#r of recipes" value="r.id">{{r.name}}</option>
+      </select>-->
+
+
+		<ul class="list-group">
+			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
+		</ul>
+
+	</div>
+	<div class="col-md-10" style="">
+		<!--Body content
+      <img src="../assets/chef2.jpg" height="300" width="300">-->
+
+		<div class="media-left media-top">
+			<a href="#">
+				<img class="media-object" src={{recipe.image}} height="300" width="300" alt="no burger picture">
+			</a>
+		</div>
+
+		<div class="media-body">
+			<h4 class="media-heading">{{recipe.name}}</h4>
+			<div [innerHTML]="recipe.description"></div>
+			<a (click)="goPrevious()">Previous</a><a class="pull-right" (click)="goNext()">Next</a>
+		</div>
+    </div>
