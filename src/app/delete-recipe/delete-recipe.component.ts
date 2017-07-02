@@ -15,7 +15,7 @@ export class DeleteRecipeComponent implements OnInit {
   constructor(private router: Router, private _recipeDataService: RecipeDataService){}
 
   ngOnInit(){
-    this.recipes = this._recipeDataService.getRecipes();
+    this.recipes = this._recipeDataService.getAllRecipes();
     //alert(this.recipes);
   }
 

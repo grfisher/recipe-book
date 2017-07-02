@@ -15,7 +15,7 @@ export class EditRecipeComponent implements OnInit {
   constructor(private router: Router, private _recipeDataService: RecipeDataService){}
 
   ngOnInit(){
-    this.recipes = this._recipeDataService.getRecipes();
+    this.recipes = this._recipeDataService.getAllRecipes();
   }
 
   //isSelected(recipe) { return recipe.id === this.selectedId; }
@@ -29,4 +29,3 @@ export class EditRecipeComponent implements OnInit {
     
   }
 }
-

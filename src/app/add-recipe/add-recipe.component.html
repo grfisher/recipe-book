@@ -6,25 +6,28 @@
 			</div>
 			<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
 				<div class="form-group">
+					<input hidden type="text" class="form-control" formControlName="id">
+				</div>
+				<div class="form-group">
 					<label>Name of your recipe</label>
 					<input type="text" class="form-control" formControlName="name">
-					<small *ngIf="!myForm.controls.name.valid" class="text-danger">
-              			Name is required (minimum 5 characters).
+					<small *ngIf="formErrors.name" class="text-danger">
+						  {{ formErrors.name }}
           			</small>
 				</div>
 				<div class="form-group">
 					<label for="inputName" class="control-label">Description, including steps</label>
 					<textarea rows="5" cols="50" class="form-control" formControlName="description"></textarea>
-					<small *ngIf="!myForm.controls.description.valid" class="text-danger">
-              			Description is required (minimum 5 characters).
+					<small *ngIf="formErrors.description" class="text-danger">
+						  {{ formErrors.description }}
           			</small>
 				</div>
 				<!--upload picture-->
 				<div class="form-group">
 					<label for="fileName" class="control-label">Add a picture of your recipe</label>
 					<input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
-					<small *ngIf="!myForm.controls.name.valid" class="text-danger">
-              			A picture of your dish is required.
+					<small *ngIf="formErrors.recipePicture" class="text-danger">
+						  {{ formErrors.recipePicture }}
           			</small>
 				</div>
 				<div class="table-responsive">
@@ -79,8 +82,8 @@
 
 				<div class="margin-20">
 					<a (click)="addIngredient()" style="cursor: default">
-            Add another ingredient +
-          </a>
+            			Add another ingredient +
+          			</a>
 				</div>
 
 				<div class="margin-20">

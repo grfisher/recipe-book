@@ -6,7 +6,6 @@
                  <option *ngFor="#r of recipes" value="r.id">{{r.name}}</option>
       </select>-->
 
-
 		<ul class="list-group">
 			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
 		</ul>
@@ -18,13 +17,27 @@
 
 		<div class="media-left media-top">
 			<a href="#">
-				<img class="media-object" src={{recipe.image}} height="300" width="300" alt="no burger picture">
+				<img class="media-object" src={{recipe.imageUrl}} height="300" width="300" alt="no burger picture">
 			</a>
 		</div>
-
 		<div class="media-body">
 			<h4 class="media-heading">{{recipe.name}}</h4>
 			<div [innerHTML]="recipe.description"></div>
+			
+			<table>
+				<thead>
+				<th>Ingredient</th>
+				<th>Qty</th>
+				</thead>
+				<tbody>
+					<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+					<tr *ngFor="let ingredients of recipe['ingredients']">
+						<td class="col-sm-2">{{ingredients.ingredient}}</td><td class="col-sm-2">{{ingredients.quantity}}</td>
+					</tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+				</tbody>
+			</table>
+
 			<a (click)="goPrevious()">Previous</a><a class="pull-right" (click)="goNext()">Next</a>
 		</div>
     </div>
