@@ -24,7 +24,7 @@ export class RecipeDataService {
 	insertRecipe(item: Recipe) {
 		alert("here: " + item.id);
 		RECIPES.push(item);
-		alert("Id: " + RECIPES[5].id);
+		alert("URL: " + RECIPES[5].imageUrl);
 	}
 
 	deleteRecipe(index: number) {

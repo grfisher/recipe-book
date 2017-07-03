@@ -25,7 +25,7 @@
 				<!--upload picture-->
 				<div class="form-group">
 					<label for="fileName" class="control-label">Add a picture of your recipe</label>
-					<input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
+					<input type="file" class="form-control" formControlName="fileName" (change)="fileEvent($event)" ng2FileSelect [uploader]="uploader" />
 					<small *ngIf="formErrors.recipePicture" class="text-danger">
 						  {{ formErrors.recipePicture }}
           			</small>

@@ -21,7 +21,7 @@ import { Ingredient } from "./ingredient";
 			new Ingredient('Salt', 1),
 			new Ingredient('Salad', 2),
 		],
-        '/assets/chickencacciatore.jpg'
+        '/assets/uploads/chickencacciatore.jpg'
 	),
 	new Recipe(1, 
 		'Au Grautin Potatos',
@@ -61,7 +61,7 @@ import { Ingredient } from "./ingredient";
 			new Ingredient('Steak', 1),
 			new Ingredient('Onions', 1),
 		],
-        '/assets/steak.jpg'
+        '/assets/uploads/steak.jpg'
 	),
     new Recipe(3, 
 		'Persian Eggplant',
@@ -84,7 +84,7 @@ import { Ingredient } from "./ingredient";
             new Ingredient('Mushrooms', 1),
             new Ingredient('Garlic', 1),
 		],
-        '/assets/eggplant.jpg'
+        '/assets/uploads/eggplant.jpg'
 	),
     new Recipe(4, 
 		'Buttermilk Chicken',
@@ -103,5 +103,5 @@ import { Ingredient } from "./ingredient";
 			new Ingredient('Onions', 1),
             new Ingredient('Butter (stick)', 1),
 		],
-        '/assets/chicken.jpg')
+        '/assets/uploads/chicken.jpg')
 ];

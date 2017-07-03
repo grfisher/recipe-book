@@ -51,7 +51,7 @@ export class AddRecipeComponent implements OnInit {
             name: ['', [Validators.required, Validators.minLength(5)]],
             description: ['', [Validators.required, Validators.minLength(5)]],
             ingredients: this._fb.array([]),
-            image: ['']
+            fileName: [this.uploader.queue.values]
         });
 
         // add ingredient
@@ -61,6 +61,11 @@ export class AddRecipeComponent implements OnInit {
         // this.myForm.controls['ingredients'].valueChanges.subscribe(x => {
         //   console.log(x);
         // })
+    }
+
+    fileEvent(fileInput: any){
+        let file = fileInput.target.files[0];
+        let fileName = file.name;
     }
 
     initIngredient() {
