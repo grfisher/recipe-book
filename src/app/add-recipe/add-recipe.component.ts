@@ -19,6 +19,7 @@ export class AddRecipeComponent implements OnInit {
 
     public myForm: FormGroup;
     public uploader: FileUploader = new FileUploader({ url: 'http://localhost:3001/upload' });
+    private fileName: string;
 
     formErrors = {
         name: '',
@@ -51,21 +52,24 @@ export class AddRecipeComponent implements OnInit {
             name: ['', [Validators.required, Validators.minLength(5)]],
             description: ['', [Validators.required, Validators.minLength(5)]],
             ingredients: this._fb.array([]),
-            fileName: [this.uploader.queue.values]
+            fileName: ['']
         });
 
         // add ingredient
         this.addIngredient();
 
         /* subscribe to ingredients value changes */
-        // this.myForm.controls['ingredients'].valueChanges.subscribe(x => {
-        //   console.log(x);
-        // })
+        this.myForm.controls['fileName'].valueChanges.subscribe(x => {
+           console.log(this.fileName);
+           alert(this.myForm[4]);
+        })
     }
 
     fileEvent(fileInput: any){
         let file = fileInput.target.files[0];
-        let fileName = file.name;
+        this.fileName = file.name;
+        this.myForm.controls['fileName'].setValue(this.fileName);
+        alert("File name: " + this.fileName)
     }
 
     initIngredient() {
