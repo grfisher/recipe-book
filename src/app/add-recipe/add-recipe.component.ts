@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, Validators, FormsModule } from '@angular/forms';
 //import { Recipe } from './recipe.interface';
 import { Recipe } from '../recipe';
 import { FileUploader } from 'ng2-file-upload';
@@ -23,7 +23,6 @@ export class AddRecipeComponent implements OnInit {
 
     formErrors = {
         name: '',
-        description: '',
         ingredients: [
             { ingredient: '', quantity: '' }
         ]
@@ -34,10 +33,6 @@ export class AddRecipeComponent implements OnInit {
             required: 'Name is required.',
             minlength: 'Nmae must be 3 characters.',
             maxlength: 'Nmae can\'t be longer that 7 characters.'
-        },
-        description: {
-            required: 'Name is required.',
-            minlength: 'Description must be 3 characters.',
         },
         ingredients: {
             required: 'Ingredients are required.'
@@ -50,9 +45,8 @@ export class AddRecipeComponent implements OnInit {
         this.myForm = this._fb.group({
             id: [this._recipeDataService.getAllRecipes().length],
             name: ['', [Validators.required, Validators.minLength(5)]],
-            description: ['', [Validators.required, Validators.minLength(5)]],
             ingredients: this._fb.array([])
-            //fileName: ['']
+
         });
 
         // add ingredient

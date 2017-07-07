@@ -4,7 +4,15 @@
   <meta charset="utf-8">
   <title>UploadFile</title>
   <base href="/">
-
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+  <script type="text/javascript">
+//<![CDATA[
+  bkLib.onDomLoaded(function() {
+        new nicEditor({maxHeight : 200}).panelInstance('area1');
+        //new nicEditor({fullPanel : true,maxHeight : 200}).panelInstance('area1');
+  });
+  //]]>
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>

@@ -17,18 +17,12 @@
 				</div>
 				<div class="form-group">
 					<label for="inputName" class="control-label">Description, including steps</label>
-					<textarea rows="5" cols="50" class="form-control" formControlName="description"></textarea>
-					<small *ngIf="formErrors.description" class="text-danger">
-						  {{ formErrors.description }}
-          			</small>
+					<textarea id="area1" name="area1" rows="5" cols="50" class="form-control"></textarea>
 				</div>
 				<!--upload picture-->
 				<div class="form-group">
 					<label for="fileName" class="control-label">Add a picture of your recipe</label>
 					<input type="file" (change)="fileEvent($event)" class="form-control" ng2FileSelect [uploader]="uploader" />
-					<small *ngIf="formErrors.recipePicture" class="text-danger">
-						  {{ formErrors.recipePicture }}
-          			</small>
 				</div>
 				<div class="table-responsive">
 					<table class="table">
