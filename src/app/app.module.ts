@@ -7,6 +7,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeDataService } from './recipe-data/recipe-data.service';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { IngredientsComponent } from './add-recipe/ingredients.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { EditRecipeDetailComponent } from './edit-recipe-detail/edit-recipe-detail.component';
@@ -21,7 +22,8 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
   imports:      [ 
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [ 
     AppComponent, 

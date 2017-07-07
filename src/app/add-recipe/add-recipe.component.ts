@@ -19,7 +19,7 @@ export class AddRecipeComponent implements OnInit {
 
     public myForm: FormGroup;
     public uploader: FileUploader = new FileUploader({ url: 'http://localhost:3001/upload' });
-    private fileName: string;
+    private imageName: string;
 
     formErrors = {
         name: '',
@@ -51,25 +51,25 @@ export class AddRecipeComponent implements OnInit {
             id: [this._recipeDataService.getAllRecipes().length],
             name: ['', [Validators.required, Validators.minLength(5)]],
             description: ['', [Validators.required, Validators.minLength(5)]],
-            ingredients: this._fb.array([]),
-            fileName: ['']
+            ingredients: this._fb.array([])
+            //fileName: ['']
         });
 
         // add ingredient
         this.addIngredient();
 
         /* subscribe to ingredients value changes */
-        this.myForm.controls['fileName'].valueChanges.subscribe(x => {
-           console.log(this.fileName);
-           alert(this.myForm[4]);
-        })
+        //this.myForm.controls['fileName'].valueChanges.subscribe(x => {
+        //   console.log(this.fileName);
+       //    alert(this.myForm[4]);
+        //})
     }
 
     fileEvent(fileInput: any){
         let file = fileInput.target.files[0];
-        this.fileName = file.name;
-        this.myForm.controls['fileName'].setValue(this.fileName);
-        alert("File name: " + this.fileName)
+        this.imageName = file.name;
+        //this.myForm.controls['fileName'].setValue(this.fileName);
+        //alert("File event function: " + this.imageName)
     }
 
     initIngredient() {
@@ -116,7 +116,7 @@ export class AddRecipeComponent implements OnInit {
             return flatMap;
         }
         */
-        this._recipeDataService.insertRecipe(this.myForm.value);
+        this._recipeDataService.insertRecipe(this.myForm.value, this.imageName);
         this.router.navigate(['/recipedetail', this._recipeDataService.getAllRecipes().length - 1]);
     }
 }

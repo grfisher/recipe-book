@@ -1,10 +1,10 @@
+<h3>Add recipe</h3>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="margin-20">
-				<h3>Add recipe</h3>
 			</div>
-			<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+			<form [formGroup]="myForm"  novalidate (ngSubmit)="save(myForm)">
 				<div class="form-group">
 					<input hidden type="text" class="form-control" formControlName="id">
 				</div>
@@ -25,7 +25,7 @@
 				<!--upload picture-->
 				<div class="form-group">
 					<label for="fileName" class="control-label">Add a picture of your recipe</label>
-					<input type="file" class="form-control" formControlName="fileName" ng2FileSelect [uploader]="uploader" />
+					<input type="file" (change)="fileEvent($event)" class="form-control" ng2FileSelect [uploader]="uploader" />
 					<small *ngIf="formErrors.recipePicture" class="text-danger">
 						  {{ formErrors.recipePicture }}
           			</small>
@@ -55,7 +55,7 @@
 									<span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
 								</td>
 								<td nowrap>
-									<button type="button" (change)="fileEvent($event)" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+									<button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                                 <span class="glyphicon glyphicon-upload"></span> Upload
                             </button>
 									<button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">

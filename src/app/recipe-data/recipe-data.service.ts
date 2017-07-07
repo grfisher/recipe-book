@@ -21,10 +21,11 @@ export class RecipeDataService {
 	//	return RECIPES.indexOf(item);
 	//}
 
-	insertRecipe(item: Recipe) {
-		alert("here: " + item.id);
+	insertRecipe(item: Recipe, img: string) {
+		item.imagePath = "/assets/uploads/" + img;
+		//alert("Insert recipe function: " + item.imageUrl);
 		RECIPES.push(item);
-		alert("URL: " + RECIPES[5].imageUrl);
+		//alert("URL: " + RECIPES[5].imageUrl);
 	}
 
 	deleteRecipe(index: number) {

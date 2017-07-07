@@ -20,8 +20,9 @@ export class RecipeDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       let id = parseInt(params['id']);
       this.recipeId = id;
-      //alert("recipe-detail: " + this.recipes[0].id);
+      
       this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
+      //alert("recipe-detail: " + this.recipe.imagePath);
     });
   }
 

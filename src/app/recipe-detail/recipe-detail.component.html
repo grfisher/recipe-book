@@ -1,5 +1,4 @@
 <h3>Recipe Detail</h3>
-
 	<div class="col-sm-2" style="">
 		<!--Sidebar content-->
 		<!--<select [(ngModel)]="selectedId">
@@ -12,18 +11,15 @@
 
 	</div>
 	<div class="col-md-10" style="">
-		<!--Body content
-      <img src="../assets/chef2.jpg" height="300" width="300">-->
-
 		<div class="media-left media-top">
 			<a href="#">
-				<img class="media-object" src={{recipe.imageUrl}} height="300" width="300" alt="no burger picture">
+				<img class="media-object" src={{recipe.imagePath}} height="300" width="300" alt="no burger picture">
 			</a>
 		</div>
 		<div class="media-body">
 			<h4 class="media-heading">{{recipe.name}}</h4>
 			<div [innerHTML]="recipe.description"></div>
-			
+			<div>&nbsp;</div>
 			<table>
 				<thead>
 				<th>Ingredient</th>

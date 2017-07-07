@@ -44,7 +44,7 @@ import { Ingredient } from "./ingredient";
 			new Ingredient('Butter', 4),
 			new Ingredient('Mayonaise', 2),
 		],
-        '/assets/potatos.jpg'
+        '/assets/uploads/potatos.jpg'
 	),
     new Recipe(2, 
 		'Steak Tar Tar',
