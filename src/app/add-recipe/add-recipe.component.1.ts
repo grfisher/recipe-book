@@ -20,7 +20,24 @@ export class AddRecipeComponent implements OnInit {
     public myForm: FormGroup;
     public uploader: FileUploader = new FileUploader({ url: 'http://localhost:3001/upload' });
     private imageName: string;
-    private description: string;
+
+    formErrors = {
+        name: '',
+        ingredients: [
+            { ingredient: '', quantity: '' }
+        ]
+    };
+
+    validationMessages = {
+        name: {
+            required: 'Name is required.',
+            minlength: 'Nmae must be 3 characters.',
+            maxlength: 'Nmae can\'t be longer that 7 characters.'
+        },
+        ingredients: {
+            required: 'Ingredients are required.'
+        }
+    }
 
     constructor(private router: Router, private _fb: FormBuilder, private _recipeDataService: RecipeDataService) { }
 
@@ -42,31 +59,11 @@ export class AddRecipeComponent implements OnInit {
         //})
     }
 
-    formErrors = {
-        name: '',
-        ingredients: [
-            { ingredient: '', quantity: '' }
-        ]
-    };
-
-    validationMessages = {
-        name: {
-            required: 'Name is required.',
-            minlength: 'Nmae must be 3 characters.',
-            maxlength: 'Nmae can\'t be longer that 7 characters.'
-        },
-        ingredients: {
-            required: 'Ingredients are required.'
-        }
-    }
-
-    keyupHandlerFunction(e) {
-        //alert("FDAFDSFDAF");
-        this.description = e;
-    }
-
-    thisIsATest(e) {
-        alert(this.description);
+    fileEvent(fileInput: any){
+        let file = fileInput.target.files[0];
+        this.imageName = file.name;
+        //this.myForm.controls['fileName'].setValue(this.fileName);
+        //alert("File event function: " + this.imageName)
     }
 
     initIngredient() {
@@ -86,13 +83,6 @@ export class AddRecipeComponent implements OnInit {
         // addrCtrl.valueChanges.subscribe(x => {
         //   console.log(x);
         // })
-    }
-
-    fileEvent(fileInput: any){
-        let file = fileInput.target.files[0];
-        this.imageName = file.name;
-        //this.myForm.controls['fileName'].setValue(this.fileName);
-        //alert("File event function: " + this.imageName)
     }
 
     removeIngredient(i: number) {
@@ -120,8 +110,7 @@ export class AddRecipeComponent implements OnInit {
             return flatMap;
         }
         */
-        this._recipeDataService.insertRecipe(this.myForm.value, this.imageName, this.description);
+        this._recipeDataService.insertRecipe(this.myForm.value, this.imageName);
         this.router.navigate(['/recipedetail', this._recipeDataService.getAllRecipes().length - 1]);
     }
-
 }

@@ -4,7 +4,7 @@
 		<div class="col-xs-12">
 			<div class="margin-20">
 			</div>
-			<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+			<form [formGroup]="myForm"  novalidate (ngSubmit)="save(myForm)">
 				<div class="form-group">
 					<input hidden type="text" class="form-control" formControlName="id">
 				</div>
@@ -16,10 +16,6 @@
           			</small>
 				</div>
 				<!--description-->
-				<div class="form-group">
-				<simple-tiny [elementId]="'my-editor-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
-				</simple-tiny>
-				</div>
 				<!--upload picture-->
 				<div class="form-group">
 					<label for="fileName" class="control-label">Add a picture of your recipe</label>
@@ -82,7 +78,7 @@
 				</div>
 
 				<div class="margin-20">
-					<button type="submit" (click)="thisIsATest($event)" class="btn btn-primary pull-right" [disabled]="!myForm.valid">xSubmit</button>
+					<button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
 				</div>
 				<div class="clearfix"></div>
 

@@ -21,9 +21,10 @@ export class RecipeDataService {
 	//	return RECIPES.indexOf(item);
 	//}
 
-	insertRecipe(item: Recipe, img: string) {
+	insertRecipe(item: Recipe, img: string, desc: string) {
 		item.imagePath = "/assets/uploads/" + img;
-		//alert("Insert recipe function: " + item.imageUrl);
+		item.description = desc;
+		alert("Insert recipe function description: " + item.description);
 		RECIPES.push(item);
 		//alert("URL: " + RECIPES[5].imageUrl);
 	}
