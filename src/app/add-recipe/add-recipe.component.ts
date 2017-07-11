@@ -61,12 +61,11 @@ export class AddRecipeComponent implements OnInit {
     }
 
     keyupHandlerFunction(e) {
-        //alert("FDAFDSFDAF");
         this.description = e;
     }
 
     thisIsATest(e) {
-        alert(this.description);
+        
     }
 
     initIngredient() {

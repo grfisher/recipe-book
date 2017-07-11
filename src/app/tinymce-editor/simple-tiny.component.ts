@@ -20,6 +20,7 @@ export class SimpleTinyComponent implements AfterViewInit, OnDestroy {
   editor;
 
   ngAfterViewInit() {
+    console.log(this.elementId);
     tinymce.init({
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table'],
@@ -32,6 +33,8 @@ export class SimpleTinyComponent implements AfterViewInit, OnDestroy {
         });
       },
     });
+    if (this.elementId === "my-editor-edit--id")
+      this.editor.setContent('XXXXXX');
   }
 
   ngOnDestroy() {

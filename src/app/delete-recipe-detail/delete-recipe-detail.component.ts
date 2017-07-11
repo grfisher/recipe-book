@@ -22,13 +22,13 @@ export class DeleteRecipeDetailComponent implements OnInit {
       let id = parseInt(params['id']);
       this.recipeId = id;
       //alert(this._recipeDataService.getRecipeById(this.recipeId));
-      alert(this.recipeId);
+
       this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
     });
   }
 
   onSelect(_recipe) {
-    alert(_recipe.id);
+
     this.router.navigate(['/deleterecipedetail', _recipe.id]);
     
   }

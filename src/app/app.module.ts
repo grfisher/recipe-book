@@ -14,10 +14,7 @@ import { EditRecipeDetailComponent } from './edit-recipe-detail/edit-recipe-deta
 import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 import { DeleteRecipeDetailComponent } from './delete-recipe-detail/delete-recipe-detail.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
-import { SimpleTinyComponent } from './add-recipe/simple-tiny.component';
-
-
-
+import { SimpleTinyComponent } from './tinymce-editor/simple-tiny.component';
 
 @NgModule({
   imports:      [ 
