@@ -24,7 +24,7 @@ export class RecipeDataService {
 	insertRecipe(item: Recipe, img: string, desc: string) {
 		item.imagePath = "/assets/uploads/" + img;
 		item.description = desc;
-		alert("Insert recipe function description: " + item.description);
+		//alert("Insert recipe function description: " + item.description);
 		RECIPES.push(item);
 		//alert("URL: " + RECIPES[5].imageUrl);
 	}
