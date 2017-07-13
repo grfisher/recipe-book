@@ -34,6 +34,9 @@ export class RecipeDataService {
 	}
 
 	updateRecipe(index: number, item: Recipe) {
+		alert("Index: " + index);
+		alert("Description: " + item.description);
 		RECIPES[index] = item;
+		console.log("RECIPES[index]: " + RECIPES[index].description)
 	}
 }

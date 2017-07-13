@@ -7,7 +7,7 @@ import { RecipeDataService } from '../recipe-data/recipe-data.service';
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './edit-recipe-detail.component.html',
-  providers: [RecipeDataService]
+  providers: [RecipeDataService],
 })
 export class EditRecipeDetailComponent implements OnInit {
   private id: number;
@@ -26,22 +26,23 @@ export class EditRecipeDetailComponent implements OnInit {
       .subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.editMode = params['id'] != null;
+        //this.editMode = params['id'] != null;
         this.initForm();
-      }
-      );
+      });
   }
 
   onSubmit() {
     // const newRecipe = new Recipe(
     //   this.recipeForm.value['name'],
-    //   this.recipeForm.value['description'],
+         this.recipeForm.value['description'] = this.description;
+         console.log(this.description);
+         console.log(this.id);
     //   this.recipeForm.value['imagePath'],
     //   this.recipeForm.value['ingredients']);
 
     this.recipeDataService.updateRecipe(this.id, this.recipeForm.value);
-
-    this.onCancel();
+    this.router.navigate(['/editrecipe']);
+    //this.onCancel();
   }
 
   onAddIngredient() {
@@ -74,9 +75,9 @@ export class EditRecipeDetailComponent implements OnInit {
       const recipe = this.recipeDataService.getRecipe(this.id);
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
-
       //$("#description").val(recipe.description)
       //recipeDescription = recipe.description;
+      //console.log(recipe);
       //recipeDescription = "Booooo";
       if (recipe['ingredients']) {
         for (let ingredient of recipe.ingredients) {
@@ -96,9 +97,10 @@ export class EditRecipeDetailComponent implements OnInit {
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),
       'imagePath': new FormControl(recipeImagePath, Validators.required),
-      //'description': new FormControl(recipeDescription, Validators.required),
+      //'mydescription': new FormControl(recipeDescription, Validators.required),
       'ingredients': recipeIngredients
     });
+    console.log(this.recipeForm);
   }
 
   keyupHandlerFunction(e) {
