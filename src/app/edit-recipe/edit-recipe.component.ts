@@ -8,36 +8,23 @@ import { RecipeDataService } from '../recipe-data/recipe-data.service';
 })
 export class EditRecipeComponent implements OnInit {
 
-  public selectedId;
   private recipeId: any;
   recipes = [];
   public recipe;
 
-  constructor(private route: ActivatedRoute, private router: Router, private _recipeDataService: RecipeDataService){}
+  constructor(private route: ActivatedRoute, private router: Router, private _recipeDataService: RecipeDataService) { }
 
-  ngOnInit(){
-
+  ngOnInit() {
     this.recipes = this._recipeDataService.getAllRecipes();
 
-    this.route.params.subscribe((params: Params) => {
-      let id = parseInt(params['id']);
-      this.recipeId = id;
-
-      this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
-
-      //alert("recipe-detail: " + this.recipe.imagePath);
-    });
-    
+    //this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
   }
-
-  //isSelected(recipe) { return recipe.id === this.selectedId; }
 
   onSelect(_recipe) {
-    alert("Here is the problem: " + _recipe.id);
+    //alert("recipe-detail: " + this.recipes[0].id);
+    //this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
+    this.router.navigate(['/editrecipedetail', _recipe.id]);
 
-    this.recipeId = _recipe.id;
-    this.router.navigate(['/editrecipedetail', this.recipe.id]);
-   // Relative Path
-   // this.router.navigate([department.id], { relativeTo: this.route });
   }
+
 }

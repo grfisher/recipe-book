@@ -120,6 +120,7 @@ export class AddRecipeComponent implements OnInit {
         }
         */
         this._recipeDataService.insertRecipe(this.myForm.value, this.imageName, this.description);
+        console.log(this._recipeDataService.getAllRecipes());
         this.router.navigate(['/recipedetail', this._recipeDataService.getAllRecipes().length - 1]);
     }
 

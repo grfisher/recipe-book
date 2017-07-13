@@ -17,6 +17,7 @@ export class RecipeListComponent {
 
   ngOnInit(){
     this.recipes = this._recipeDataService.getAllRecipes();
+    console.log(this.recipes);
     //alert("recipe-list: " + this.recipes[0].id);
   }
 

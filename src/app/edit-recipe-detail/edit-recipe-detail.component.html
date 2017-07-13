@@ -1,11 +1,15 @@
 <h3>Update Recipe</h3>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+	<div class="col-sm-2">
+		<ul class="list-group">
+			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
+		</ul>
+
+	</div>
+	<div class="col-md-10">
+		<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
 				<div class="row">
 					<div class="col-xs-12">
-						<button type="submit" (click)="thisIsATest($event)" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
+						<button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
 						<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
 					</div>
 				</div>
@@ -71,7 +75,4 @@
 					</div>
 				</div>
 			</form>
-		</div>
-	</div>
-
-</div>
+    </div>
