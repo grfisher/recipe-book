@@ -16,15 +16,10 @@ export class EditRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.recipes = this._recipeDataService.getAllRecipes();
-
-    //this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
   }
 
   onSelect(_recipe) {
-    //alert("recipe-detail: " + this.recipes[0].id);
-    //this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
     this.router.navigate(['/editrecipedetail', _recipe.id]);
-
   }
 
 }

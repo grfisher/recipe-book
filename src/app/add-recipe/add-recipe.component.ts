@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, FormsModule } from '@angular/forms';
-//import { Recipe } from './recipe.interface';
 import { Recipe } from '../recipe';
 import { FileUploader } from 'ng2-file-upload';
 import { RecipeDataService } from '../recipe-data/recipe-data.service';
@@ -29,17 +28,9 @@ export class AddRecipeComponent implements OnInit {
             id: [this._recipeDataService.getAllRecipes().length],
             name: ['', [Validators.required, Validators.minLength(5)]],
             ingredients: this._fb.array([])
-
         });
 
-        // add ingredient
         this.addIngredient();
-
-        /* subscribe to ingredients value changes */
-        //this.myForm.controls['fileName'].valueChanges.subscribe(x => {
-        //   console.log(this.fileName);
-       //    alert(this.myForm[4]);
-        //})
     }
 
     formErrors = {
@@ -65,7 +56,7 @@ export class AddRecipeComponent implements OnInit {
     }
 
     thisIsATest(e) {
-        
+
     }
 
     initIngredient() {
@@ -87,11 +78,9 @@ export class AddRecipeComponent implements OnInit {
         // })
     }
 
-    fileEvent(fileInput: any){
+    fileEvent(fileInput: any) {
         let file = fileInput.target.files[0];
         this.imageName = file.name;
-        //this.myForm.controls['fileName'].setValue(this.fileName);
-        //alert("File event function: " + this.imageName)
     }
 
     removeIngredient(i: number) {
@@ -102,23 +91,6 @@ export class AddRecipeComponent implements OnInit {
     save(model: Recipe) {
         // call API to save
 
-        /*
-        Flatten array
-        var data = [["I", "want", "to"], ["tell", "you", "a"], ["story"]];
-
-        var flatten = function (arr) {
-
-            var flatMap = [];
-            arr.forEach(function (value) {
-                if (Array.isArray(value)) {
-                    flatMap = flatMap.concat(flatten(value))
-                } else {
-                    flatMap.push(value)
-                }
-            });
-            return flatMap;
-        }
-        */
         this._recipeDataService.insertRecipe(this.myForm.value, this.imageName, this.description);
         console.log(this._recipeDataService.getAllRecipes());
         this.router.navigate(['/recipedetail', this._recipeDataService.getAllRecipes().length - 1]);

@@ -22,15 +22,12 @@ export class RecipeDetailComponent implements OnInit {
       this.recipeId = id;
       
       this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
-      //alert("recipe-detail: " + this.recipe.imagePath);
     });
   }
 
   onSelect(_recipe) {
-    //alert("recipe-detail: " + this.recipes[0].id);
     this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
     this.router.navigate(['/recipedetail', _recipe.id]);
-    
   }
 
     goPrevious(){

@@ -98,13 +98,13 @@ export class EditRecipeDetailComponent implements OnInit {
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),
       'imagePath': new FormControl(recipeImagePath, Validators.required),
-      //'mydescription': new FormControl(recipeDescription, Validators.required),
+      
       'ingredients': recipeIngredients
     });
     console.log(this.recipeForm);
   }
 
-  onSubmit(form: any) {
+  onSubmit(form: Recipe) {
     form.description = this.description;
     this.recipeDataService.updateRecipe(this.recipeId, form);
     this.router.navigate(['/editrecipe']);
@@ -127,11 +127,6 @@ export class EditRecipeDetailComponent implements OnInit {
   }
 
   keyupHandlerFunction(e) {
-    //alert("NOOOOWWW");
     this.description = e;
   }
-
-  // thisIsATest(e) {
-  //   return this.description;
-  // }
 }

@@ -3,7 +3,6 @@
 	<ul class="list-group">
 		<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
 	</ul>
-
 </div>
 <div class="col-md-10">
 	<form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm.value)">
@@ -75,10 +74,10 @@
 			</div>
 		</div>
 		<div class="margin-20">
-		<div>myForm details:-</div>
-		<pre>Is myForm valid?: <br>{{recipeForm.valid | json}}</pre>
-		<pre>form value: <br>{{recipeForm.value | json}}</pre>
-	</div>
+			<div>myForm details:-</div>
+			<pre>Is myForm valid?: <br>{{recipeForm.valid | json}}</pre>
+			<pre>form value: <br>{{recipeForm.value | json}}</pre>
+		</div>
 	</form>
-	
+
 </div>
