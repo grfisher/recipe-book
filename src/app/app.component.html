@@ -3,10 +3,13 @@
 
 	<div>
 		<a><label>Recipe Book</label></a>
-		<b><input type="text" class="form-control" id="inlineFormInput" placeholder="Search recipes">
-        <button type="button" class="btn btn-info">
-        <span class="glyphicon glyphicon-search"></span> Search
-        </button></b>
+
+		<form id="filter">
+			<input type="text" class="form-control" [(ngModel)]="term" name="xxx" placeholder="Search recipes">
+			<button type="submit" (click)="show = !show" class="btn btn-info">
+				<span class="glyphicon glyphicon-search"></span> Search
+		</button> show = {{show}}
+		</form>
 	</div>
 	<!--</form>-->
 	<hr>
@@ -17,18 +20,29 @@
             <span class = "icon-bar"></span>
         </button>
 		<div class="collapse navbar-collapse navHeaderCollapse">
-        <nav>
-            <div class = "btn-group">
-		    <a routerLink="/recipes" routerLinkActive="active" class="btn btn-primary">All Recipes</a>
-		    <a routerLink="/addrecipe" routerLinkActive="active" class="btn btn-primary">Add Recipe</a>
-		    <a routerLink="/editrecipe" routerLinkActive="active" class="btn btn-primary">Update Recipe</a>
-		    <a routerLink="/deleterecipe" routerLinkActive="active" class="btn btn-primary">Delete Recipe</a>
-		    <a routerLink="/external" routerLinkActive="active" class="btn btn-primary">External Recipes</a>
-            </div>
-		</nav>
+			<nav>
+				<div class="btn-group">
+					<a routerLink="/recipes" routerLinkActive="active" class="btn btn-primary">All Recipes</a>
+					<a routerLink="/addrecipe" routerLinkActive="active" class="btn btn-primary">Add Recipe</a>
+					<a routerLink="/editrecipe" routerLinkActive="active" class="btn btn-primary">Update Recipe</a>
+					<a routerLink="/deleterecipe" routerLinkActive="active" class="btn btn-primary">Delete Recipe</a>
+					<a routerLink="/external" routerLinkActive="active" class="btn btn-primary">External Recipes</a>
+				</div>
+			</nav>
 		</div>
-        
-        
+
+
 	</div>
-	<router-outlet></router-outlet>
+	<div *ngIf="show; else elseBlock">
+		<router-outlet></router-outlet>
+	</div>
+	<ng-template #elseBlock>
+		<ul id="recipe-listing">
+			<li *ngFor="let recipe of recipes | filter:term">
+				<div class="recipe">
+					<h3>{{recipe.name}}</h3>
+				</div>
+			</li>
+		</ul>
+	</ng-template>
 </div>

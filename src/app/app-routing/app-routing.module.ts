@@ -7,10 +7,8 @@ import { EditRecipeComponent } from '../edit-recipe/edit-recipe.component';
 import { EditRecipeDetailComponent } from '../edit-recipe-detail/edit-recipe-detail.component';
 import { DeleteRecipeComponent } from '../delete-recipe/delete-recipe.component';
 import { DeleteRecipeDetailComponent } from '../delete-recipe-detail/delete-recipe-detail.component';
-import { DirectoryComponent } from '../directory/directory.component';
 
 const routes: Routes = [
-  { path: 'directory', component: DirectoryComponent },
   { path: 'recipes', component: RecipeListComponent },
   { path: 'addrecipe', component: AddRecipeComponent },
   { path: 'editrecipe', component: EditRecipeComponent},

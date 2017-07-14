@@ -15,8 +15,7 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 import { DeleteRecipeDetailComponent } from './delete-recipe-detail/delete-recipe-detail.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { SimpleTinyComponent } from './tinymce-editor/simple-tiny.component';
-import { DirectoryComponent } from './directory/directory.component';
-import { FilterPipe } from './directory/filter.pipe';
+import { FilterPipe } from './search/filter.pipe';
 
 @NgModule({
   imports:      [ 
@@ -38,7 +37,6 @@ import { FilterPipe } from './directory/filter.pipe';
     FileSelectDirective, 
     FileDropDirective,
     SimpleTinyComponent,
-    DirectoryComponent,
     FilterPipe],
     bootstrap:    [ AppComponent ],
 })

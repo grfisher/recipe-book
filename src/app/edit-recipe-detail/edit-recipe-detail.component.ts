@@ -20,7 +20,7 @@ export class EditRecipeDetailComponent implements OnInit {
   private recipe: any;
   private recipeId: number;
   public myForm: FormGroup;
-
+ 
   // myForm = {
   //   id: '',
   //   name: '',

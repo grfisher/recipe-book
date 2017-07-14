@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./directory.component.css'],
   providers: [RecipeDataService]
 })
-export class DirectoryComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   recipes = [];
 
@@ -18,5 +18,4 @@ export class DirectoryComponent implements OnInit {
   ngOnInit() {
     this.recipes = this.recipeDataService.getAllRecipes();
   }
-
 }
