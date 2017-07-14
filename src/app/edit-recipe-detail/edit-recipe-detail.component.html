@@ -6,7 +6,7 @@
 </div>
 <div class="col-md-10">
 	<form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm.value)">
-		<div class="row">
+		<div class="row bottom_shiv">
 			<div class="col-xs-12">
 				<button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
 				<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<img [src]="imagePath.value" class="img-responsive">
+				<img [src]="imagePath.value" class="img-responsive" height="300" width="300">
 			</div>
 		</div>
 		<div class="row">
@@ -73,11 +73,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="margin-20">
+		<!-- <div class="margin-20">
 			<div>myForm details:-</div>
 			<pre>Is myForm valid?: <br>{{recipeForm.valid | json}}</pre>
 			<pre>form value: <br>{{recipeForm.value | json}}</pre>
-		</div>
+		</div> -->
 	</form>
 
 </div>

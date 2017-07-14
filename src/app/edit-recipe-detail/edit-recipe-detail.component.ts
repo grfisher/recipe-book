@@ -9,6 +9,7 @@ import { Recipe } from "app/recipe";
   selector: 'app-recipe-edit',
   templateUrl: './edit-recipe-detail.component.html',
   providers: [RecipeDataService],
+  styleUrls:['edit-recipe-detail.component.css']
 })
 export class EditRecipeDetailComponent implements OnInit {
   private id: number;
@@ -37,22 +38,13 @@ export class EditRecipeDetailComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe((params: Params) => {
+
       let id = parseInt(params['id']);
       this.recipeId = id;
-      //alert("recipe-detail ID: " + this.recipeId);
+
     });
 
-    // this.myForm = this._fb.group({
-    //   id: this.recipeId,
-    //   name: ['', [Validators.required, Validators.minLength(5)]],
-    //   ingredients: this._fb.array([])
-    // });
-
-    
-
     this.recipes = this.recipeDataService.getAllRecipes();
-    // alert("Now: " + this.recipeId);
-    // this.recipe = this.recipeDataService.getRecipeById(this.recipeId);
 
     this.recipe = this.recipeDataService.getRecipeById(this.recipeId);
 
@@ -60,10 +52,10 @@ export class EditRecipeDetailComponent implements OnInit {
   }
 
   onSelect(_recipe) {
-    // alert("recipe-detail ID: " + _recipe.id);
+
     this.recipe = this.recipeDataService.getRecipeById(_recipe.id);
     this.initForm(this.recipe);
-    //this.router.navigate(['/editrecipedetail', _recipe.id]);
+
   }
 
   private initForm(recipe: Recipe) {
@@ -73,13 +65,9 @@ export class EditRecipeDetailComponent implements OnInit {
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
-      //const recipe = this.recipeDataService.getRecipe(this.id);
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
-      //$("#description").val(recipe.description)
-      //recipeDescription = recipe.description;
-      //console.log(recipe);
-      //recipeDescription = "Booooo";
+
       if (recipe['ingredients']) {
         for (let ingredient of recipe.ingredients) {
           recipeIngredients.push(
@@ -101,7 +89,6 @@ export class EditRecipeDetailComponent implements OnInit {
       
       'ingredients': recipeIngredients
     });
-    console.log(this.recipeForm);
   }
 
   onSubmit(form: Recipe) {

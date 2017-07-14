@@ -1,0 +1,13 @@
+<h2>Recipe Search</h2>
+<form id="filter">
+  <label>Filter recipes by name:</label>
+  <input type="text" [(ngModel)]="term" name="xxx">
+</form>
+
+<ul id="recipe-listing">
+  <li *ngFor="let recipe of recipes | filter:term">
+    <div class="recipe">
+      <h3>{{recipe.name}}</h3>
+    </div>
+  </li>
+</ul>

@@ -1,24 +1,13 @@
 <h3>Delete Recipe</h3>
 
 <div class="row">
-	<div class="col-sm-2" style="">
-		<!--Sidebar content-->
-		<!--<select [(ngModel)]="selectedId">
-                 <option *ngFor="#r of recipes" value="r.id">{{r.name}}</option>
-      </select>-->
-		<!--<ul class="items">
-        <div *ngFor="let recipe of recipes">
-          <span class="badge">{{recipe.name}}</span>
-        </div>
-      </ul>-->
-
+	<div class="col-sm-2">
 		<ul class="list-group">
 			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
 		</ul>
 
-
 	</div>
-	<div class="col-sm-6" style="">
+	<div class="col-sm-6">
 		<!--Body content-->
 		<p>Select a recipe from the menu on the left to delete.
 

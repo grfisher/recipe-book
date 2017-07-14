@@ -4,7 +4,8 @@ import { RecipeDataService } from '../recipe-data/recipe-data.service';
 
 @Component({
   templateUrl: 'delete-recipe-detail.component.html',
-  providers: [RecipeDataService]
+  providers: [RecipeDataService],
+    styleUrls:['delete-recipe-detail.component.css']
 })
 
 export class DeleteRecipeDetailComponent implements OnInit {
@@ -13,18 +14,31 @@ export class DeleteRecipeDetailComponent implements OnInit {
   public recipe;
   public recipes = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private _recipeDataService: RecipeDataService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private recipeDataService: RecipeDataService) { }
 
   ngOnInit() {
-    this.recipes = this._recipeDataService.getAllRecipes();
 
-    this.recipe = this._recipeDataService.getRecipeById(this.recipeId);
+    this.recipes = this.recipeDataService.getAllRecipes();
+
+    this.route.params.subscribe((params: Params) => {
+      let id = parseInt(params['id']);
+      this.recipeId = id;
+
+      this.recipe = this.recipeDataService.getRecipeById(this.recipeId);
+    });
   }
 
-  onSelect(_recipe) {
+  onSelect(recipe) {
 
-    this.router.navigate(['/deleterecipedetail', _recipe.id]);
+    //console.log(recipe.id);
+    this.recipeId = recipe.id;
+    this.router.navigate(['/deleterecipedetail', this.recipeId]);
 
+  }
+
+  onDelete(){
+    this.recipeDataService.deleteRecipe(this.recipeId);
+    this.router.navigate(['/deleterecipe']);
   }
 
   goPrevious() {

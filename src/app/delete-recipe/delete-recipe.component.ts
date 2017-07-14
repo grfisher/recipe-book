@@ -8,23 +8,19 @@ import { RecipeDataService } from '../recipe-data/recipe-data.service';
 })
 export class DeleteRecipeComponent implements OnInit {
 
- public selectedId;
-
   recipes = [];
 
   constructor(private router: Router, private _recipeDataService: RecipeDataService){}
 
   ngOnInit(){
-    this.recipes = this._recipeDataService.getAllRecipes();
-    //alert(this.recipes);
-  }
 
-  //isSelected(recipe) { return recipe.id === this.selectedId; }
+    this.recipes = this._recipeDataService.getAllRecipes();
+
+  }
 
   onSelect(recipe) {
 
     this.router.navigate(['/deleterecipedetail', recipe.id]);
-   // Relative Path
-   // this.router.navigate([department.id], { relativeTo: this.route });
+    
   }
 }

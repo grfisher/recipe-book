@@ -13,11 +13,15 @@
 	</div>
 	<div class="col-md-10" style="">
 		<!--Body content
-      <img src="../assets/chef2.jpg" height="300" width="300">-->
-
+      	<img src="../assets/chef2.jpg" height="300" width="300">-->
+		<div class="row btn-align-right">
+			<div class="col-xs-12">
+				<button type="button" class="btn btn-danger" (click)="onDelete()">Delete recipe</button>
+			</div>
+		</div>
 		<div class="media-left media-top">
 			<a href="#">
-				<img class="media-object" src={{recipe.image}} height="300" width="300" alt="no burger picture">
+				<img class="media-object" src={{recipe.imagePath}} height="300" width="300" alt="no burger picture">
 			</a>
 		</div>
 

@@ -16,15 +16,13 @@ export class RecipeListComponent {
   constructor(private router: Router, private _recipeDataService: RecipeDataService){}
 
   ngOnInit(){
+
     this.recipes = this._recipeDataService.getAllRecipes();
-    console.log(this.recipes);
-    //alert("recipe-list: " + this.recipes[0].id);
+    
   }
 
-  //isSelected(recipe) { return recipe.id === this.selectedId; }
-
   onSelect(recipe) {
-    //alert("recipe-list: " + this.recipes[0].id);
+
     this.router.navigate(['/recipedetail', recipe.id]);
    // Relative Path
    // this.router.navigate([department.id], { relativeTo: this.route });

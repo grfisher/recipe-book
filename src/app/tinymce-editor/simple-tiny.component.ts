@@ -17,13 +17,10 @@ export class SimpleTinyComponent implements AfterViewInit, OnDestroy {
   @Input() elementId: String;
   @Output() onEditorKeyup = new EventEmitter<any>();
   
-  //test;
-  
   editor;
 
 
   ngAfterViewInit() {
-    console.log(this.elementId);
     tinymce.init({
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table'],
@@ -33,7 +30,6 @@ export class SimpleTinyComponent implements AfterViewInit, OnDestroy {
         editor.on('keyup', () => {
           const content = editor.getContent();
           this.onEditorKeyup.emit(content);
-          //alert(content);
         });
       },
     });

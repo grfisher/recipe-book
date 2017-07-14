@@ -71,11 +71,7 @@ export class AddRecipeComponent implements OnInit {
         const ingredientCtrl = this.initIngredient();
 
         control.push(ingredientCtrl);
-
-        /* subscribe to individual address value changes */
-        // addrCtrl.valueChanges.subscribe(x => {
-        //   console.log(x);
-        // })
+        
     }
 
     fileEvent(fileInput: any) {
@@ -92,7 +88,6 @@ export class AddRecipeComponent implements OnInit {
         // call API to save
 
         this._recipeDataService.insertRecipe(this.myForm.value, this.imageName, this.description);
-        console.log(this._recipeDataService.getAllRecipes());
         this.router.navigate(['/recipedetail', this._recipeDataService.getAllRecipes().length - 1]);
     }
 
