@@ -5,15 +5,28 @@ import { RECIPES } from "../recipes";
 @Injectable()
 
 export class RecipeDataService {
+	
 	getAllRecipes() {
-		return RECIPES;
+		let recipes: Recipe[];
+		recipes = RECIPES;
+
+		console.log(recipes);
+		return recipes;
 	}
 
 	getRecipeById(index: number) {
-		return RECIPES[index];
+		let recipe: Recipe;
+		recipe = RECIPES[index];
+
+		console.log("*" + recipe);
+		return recipe;
 	}
 
 	getRecipe(index: number) {
+		let recipe: Recipe;
+		recipe = RECIPES[index]
+
+		console.log("*" + recipe);
 		return RECIPES[index];
 	}
 

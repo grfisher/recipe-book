@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators, NgForm, FormBuilder } from '@angular/forms';
 
 import { RecipeDataService } from '../recipe-data/recipe-data.service';
 import { Recipe } from "app/recipe";
@@ -18,23 +18,41 @@ export class EditRecipeDetailComponent implements OnInit {
   private recipes = [];
   private recipe: any;
   private recipeId: number;
+  public myForm: FormGroup;
 
-  constructor(private route: ActivatedRoute,
+  // myForm = {
+  //   id: '',
+  //   name: '',
+  //   description: '',
+  //   ingredients: [{ ingredient: '', quantity: '' }],
+  //   imagePath: ''
+  // }
+
+  constructor(private _fb: FormBuilder, private route: ActivatedRoute,
     private recipeDataService: RecipeDataService,
     private router: Router) {
 
   }
 
   ngOnInit() {
-    this.recipes = this.recipeDataService.getAllRecipes();
-    // alert("Now: " + this.recipeId);
-    // this.recipe = this.recipeDataService.getRecipeById(this.recipeId);
 
     this.route.params.subscribe((params: Params) => {
       let id = parseInt(params['id']);
       this.recipeId = id;
       //alert("recipe-detail ID: " + this.recipeId);
     });
+
+    // this.myForm = this._fb.group({
+    //   id: this.recipeId,
+    //   name: ['', [Validators.required, Validators.minLength(5)]],
+    //   ingredients: this._fb.array([])
+    // });
+
+    
+
+    this.recipes = this.recipeDataService.getAllRecipes();
+    // alert("Now: " + this.recipeId);
+    // this.recipe = this.recipeDataService.getRecipeById(this.recipeId);
 
     this.recipe = this.recipeDataService.getRecipeById(this.recipeId);
 
@@ -44,7 +62,6 @@ export class EditRecipeDetailComponent implements OnInit {
   onSelect(_recipe) {
     // alert("recipe-detail ID: " + _recipe.id);
     this.recipe = this.recipeDataService.getRecipeById(_recipe.id);
-    //alert("recipe-detail ID: " + this.recipe.description);
     this.initForm(this.recipe);
     //this.router.navigate(['/editrecipedetail', _recipe.id]);
   }
@@ -87,19 +104,10 @@ export class EditRecipeDetailComponent implements OnInit {
     console.log(this.recipeForm);
   }
 
-  onSubmit() {
-    // const newRecipe = new Recipe(
-    //  this.recipeForm.value['name'],
-    console.log("ID: " + this.id);
-    this.recipeForm.value['description'] = this.description;
-    console.log("Description: " + this.description);
-
-    //   this.recipeForm.value['imagePath'],
-    //   this.recipeForm.value['ingredients']);
-
-    this.recipeDataService.updateRecipe(this.id, this.recipeForm.value);
+  onSubmit(form: any) {
+    form.description = this.description;
+    this.recipeDataService.updateRecipe(this.recipeId, form);
     this.router.navigate(['/editrecipe']);
-    //this.onCancel();
   }
 
   onAddIngredient() {
@@ -116,10 +124,6 @@ export class EditRecipeDetailComponent implements OnInit {
 
   onDeleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
-  }
-
-  onCancel() {
-    //this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   keyupHandlerFunction(e) {
