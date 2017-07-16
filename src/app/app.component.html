@@ -6,9 +6,9 @@
 
 		<form id="filter">
 			<input type="text" class="form-control" [(ngModel)]="term" name="xxx" placeholder="Search recipes">
-			<button type="submit" (click)="show = !show" class="btn btn-info">
+			<button type="submit" (click)="show = false" class="btn btn-info">
 				<span class="glyphicon glyphicon-search"></span> Search
-		</button> show = {{show}}
+		</button>
 		</form>
 	</div>
 	<!--</form>-->
@@ -21,7 +21,7 @@
         </button>
 		<div class="collapse navbar-collapse navHeaderCollapse">
 			<nav>
-				<div class="btn-group">
+				<div class="btn-group" (click)="show = true">
 					<a routerLink="/recipes" routerLinkActive="active" class="btn btn-primary">All Recipes</a>
 					<a routerLink="/addrecipe" routerLinkActive="active" class="btn btn-primary">Add Recipe</a>
 					<a routerLink="/editrecipe" routerLinkActive="active" class="btn btn-primary">Update Recipe</a>
@@ -30,8 +30,6 @@
 				</div>
 			</nav>
 		</div>
-
-
 	</div>
 	<div *ngIf="show; else elseBlock">
 		<router-outlet></router-outlet>
