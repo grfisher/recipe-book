@@ -5,10 +5,13 @@
 		<a><label>Recipe Book</label></a>
 
 		<form id="filter">
-			<input type="text" class="form-control" [(ngModel)]="term" name="xxx" placeholder="Search recipes">
-			<button type="submit" (click)="show = false" class="btn btn-info">
+			<div class="inner-addon left-addon">
+				<i class="glyphicon glyphicon-search"></i>
+				<input width="80%" type="text" class="form-control" [(ngModel)]="term" name="recipeSearch" placeholder="Search recipes">
+				<button type="submit" (click)="show = false" class="btn btn-info">
 				<span class="glyphicon glyphicon-search"></span> Search
-		</button>
+			</button>
+			</div>
 		</form>
 	</div>
 	<!--</form>-->
