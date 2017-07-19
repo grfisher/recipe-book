@@ -1,49 +1,77 @@
 <div class="container">
 	<!--<form class="form-inline">-->
-
 	<div>
-		<a><label>Recipe Book</label></a>
-
-		<form id="filter">
-			<div class="inner-addon left-addon">
-				<i class="glyphicon glyphicon-search"></i>
-				<input width="80%" type="text" class="form-control" [(ngModel)]="term" name="recipeSearch" placeholder="Search recipes">
-				<button type="submit" (click)="show = false" class="btn btn-info">
-				<span class="glyphicon glyphicon-search"></span> Search
-			</button>
-			</div>
-		</form>
-	</div>
-	<!--</form>-->
-	<hr>
-	<div class="navbar navbar-default navbar-static">
-		<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-            <span class = "icon-bar"></span>
-            <span class = "icon-bar"></span>
-            <span class = "icon-bar"></span>
-        </button>
-		<div class="collapse navbar-collapse navHeaderCollapse">
-			<nav>
-				<div class="btn-group" (click)="show = true">
-					<a routerLink="/recipes" routerLinkActive="active" class="btn btn-primary">All Recipes</a>
-					<a routerLink="/addrecipe" routerLinkActive="active" class="btn btn-primary">Add Recipe</a>
-					<a routerLink="/editrecipe" routerLinkActive="active" class="btn btn-primary">Update Recipe</a>
-					<a routerLink="/deleterecipe" routerLinkActive="active" class="btn btn-primary">Delete Recipe</a>
-					<a routerLink="/external" routerLinkActive="active" class="btn btn-primary">External Recipes</a>
-				</div>
-			</nav>
+		<div class="header-block">
+			<img src="assets/dish5.jpg" height="200px" width="1138px">
 		</div>
-	</div>
-	<div *ngIf="show; else elseBlock">
-		<router-outlet></router-outlet>
-	</div>
-	<ng-template #elseBlock>
-		<ul id="recipe-listing">
-			<li *ngFor="let recipe of recipes | filter:term">
-				<div class="recipe">
-					<h3>{{recipe.name}}</h3>
+
+		<form id="filter" class="search-top-margin">
+			<div class="input-group">
+				<input type="text" class="form-control" [(ngModel)]="term" name="recipeSearch" placeholder="Type an ingredient here...">
+				<span class="input-group-btn"><button class="btn btn-default" type="button">Search recipes</button></span>
+			</div>
+			<button type="submit" (click)="show = false" class="btn btn-info">
+			<span class="glyphicon glyphicon-search"></span> Find a recipe
+		</button>
+		</form>
+
+		<!--</form>-->
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand navbar-text-color">Recipe Book</a>
 				</div>
-			</li>
-		</ul>
-	</ng-template>
+
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="/recipes">Recipe List</a></li>
+						<li><a href="/addrecipe">Add A Recipe</a></li>
+						<li><a href="/editrecipe">Update A Recipe</a></li>
+						<li><a href="/deleterecipe">Delete A Recipe</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">External Recipes<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://www.allrecipes.com">Allrecipes</a></li>
+								<li><a href="http://www.foodnetwork.com">Food Network</a></li>
+								<li><a href="http://finecooking.com">Fine Cooking</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div *ngIf="show; else elseBlock">
+			<router-outlet></router-outlet>
+		</div>
+		<ng-template #elseBlock>
+			<ul id="recipe-listing">
+				<div *ngFor="let recipe of recipes | filter:term">
+					<div class="recipe">
+						<!-- Left-aligned -->
+						<div class="media">
+							<div class="media-left">
+								<img src="{{recipe.imagePath}}" class="media-object" style="width:140px">
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">{{recipe.name}}</h4>
+								<div [innerHTML]="recipe.description"></div>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</ng-template>
+	</div>
 </div>

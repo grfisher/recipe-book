@@ -1,83 +1,84 @@
 <h3>Update Recipe</h3>
-<div class="col-sm-2">
-	<ul class="list-group">
-		<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
-	</ul>
-</div>
-<div class="col-md-10">
-	<form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm.value)">
-		<div class="row bottom_shiv">
-			<div class="col-xs-12">
-				<button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
-				<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-			</div>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="list-group">
+			<a (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item"><img align="top" src="../assets/Forkandspoon.png">{{recipe.name}}</a>
 		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input type="text" id="name" formControlName="name" class="form-control">
+	</div>
+	<div class="col-md-9">
+		<form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm.value)">
+			<div class="row bottom_shiv">
+				<div class="col-xs-12">
+					<button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
+					<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="imagePath">Image URL</label>
-					<input type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<img [src]="imagePath.value" class="img-responsive" height="300" width="300">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="description">Description</label>
-					<!--description-->
+			<div class="row">
+				<div class="col-xs-12">
 					<div class="form-group">
-						<simple-tiny [elementId]="'my-editor-edit-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
-						</simple-tiny>
+						<label for="name">Name</label>
+						<input type="text" id="name" formControlName="name" class="form-control">
 					</div>
-					<!--<textarea
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label for="imagePath">Image URL</label>
+						<input type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<img [src]="imagePath.value" class="img-responsive" height="300" width="300">
+				</div>
+			</div>
+			<div class="row top_shiv">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label for="description">Description</label>
+						<!--description-->
+						<div class="form-group">
+							<simple-tiny [elementId]="'my-editor-edit-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
+							</simple-tiny>
+						</div>
+						<!--<textarea
               type="text"
               id="description"
               class="form-control"
               formControlName="description"
               rows="6"></textarea>-->
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12" formArrayName="ingredients">
-				<div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index" [formGroupName]="i"
-				 style="margin-top: 10px;">
-					<div class="col-xs-8">
-						<input type="text" class="form-control" formControlName="ingredient">
-					</div>
-					<div class="col-xs-2">
-						<input type="number" class="form-control" formControlName="quantity">
-					</div>
-					<div class="col-xs-2">
-						<button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-success" (click)="onAddIngredient()">Add Ingredient</button>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- <div class="margin-20">
+			<div class="row">
+				<div class="col-xs-12" formArrayName="ingredients">
+					<div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index" [formGroupName]="i"
+					 style="margin-top: 10px;">
+						<div class="col-xs-8">
+							<input type="text" class="form-control" formControlName="ingredient">
+						</div>
+						<div class="col-xs-2">
+							<input type="number" class="form-control" formControlName="quantity">
+						</div>
+						<div class="col-xs-2">
+							<button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12">
+							<button type="button" class="btn btn-success" (click)="onAddIngredient()">Add Ingredient</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="margin-20">
 			<div>myForm details:-</div>
 			<pre>Is myForm valid?: <br>{{recipeForm.valid | json}}</pre>
 			<pre>form value: <br>{{recipeForm.value | json}}</pre>
 		</div> -->
-	</form>
-
+		</form>
+	</div>
 </div>
