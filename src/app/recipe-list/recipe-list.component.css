@@ -1,0 +1,8 @@
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+       cursor: pointer;
+}
+
+.center{
+    margin: auto;
+    width: 50%;
+}

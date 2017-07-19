@@ -1,16 +1,17 @@
 <h3>Recipe Detail</h3>
-	<div class="col-sm-2">
+<div class="row">
+	<div class="col-sm-3" style="text-align: left">
 		<!--Sidebar content-->
 		<!--<select [(ngModel)]="selectedId">
                  <option *ngFor="#r of recipes" value="r.id">{{r.name}}</option>
       </select>-->
 
-		<ul class="list-group">
-			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
-		</ul>
+		<div class="list-group">
+			<a (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item"><img align="top" src="../assets/Forkandspoon.png">{{recipe.name}}</a>
+		</div>
 
 	</div>
-	<div class="col-md-10">
+	<div class="col-md-9">
 		<div class="media-left media-top">
 			<a href="#">
 				<img class="media-object" src={{recipe.imagePath}} height="300" width="300" alt="no burger picture">
@@ -22,18 +23,26 @@
 			<div>&nbsp;</div>
 			<table>
 				<thead>
-				<th>Ingredient</th>
-				<th>Qty</th>
+					<th>Ingredient</th>
+					<th>Qty</th>
 				</thead>
 				<tbody>
-					<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-					<tr *ngFor="let ingredients of recipe['ingredients']">
-						<td class="col-sm-2">{{ingredients.ingredient}}</td><td class="col-sm-2">{{ingredients.quantity}}</td>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
 					</tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+					<tr *ngFor="let ingredients of recipe['ingredients']">
+						<td class="col-sm-2">{{ingredients.ingredient}}</td>
+						<td class="col-sm-2">{{ingredients.quantity}}</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
 				</tbody>
 			</table>
 
 			<a (click)="goPrevious()">Previous</a><a class="pull-right" (click)="goNext()">Next</a>
 		</div>
-    </div>
+	</div>
+</div>

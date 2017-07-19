@@ -1,7 +1,7 @@
 <h3>Recipe List</h3>
 
 <div class="row">
-	<div class="col-sm-2" style="">
+	<div class="col-sm-3" style="text-align: left">
 		<!--Sidebar content-->
 		<!--<select [(ngModel)]="selectedId">
                  <option *ngFor="#r of recipes" value="r.id">{{r.name}}</option>
@@ -10,15 +10,14 @@
         <div *ngFor="let recipe of recipes">
           <span class="badge">{{recipe.name}}</span>
         </div>
-      </ul>-->
+			</ul>-->
 
-		<ul class="list-group">
-			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
-		</ul>
-
+		<div class="list-group">
+			<a nowrap (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item"><img align="top" src="../assets/Forkandspoon.png">{{recipe.name}}</a>
+		</div>
 
 	</div>
-	<div class="col-sm-6" style="">
+	<div class="col-sm-9">
 		<!--Body content-->
 		<img src="../assets/chef2.jpg" height="300" width="300">
 

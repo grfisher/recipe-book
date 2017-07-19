@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.footer-top-margin{
+    margin-top: 45px;
+    margin-left: 45px;
+}
+
+.recipe-list-column{
+    width: 300px;
+}
+
+.hairline{
+    margin-bottom: 5px;
+}
+
+.align-right{
+    text-align: right;
+}

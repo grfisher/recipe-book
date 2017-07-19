@@ -1,3 +1,7 @@
 .btn-align-right{
     text-align: right;
 }
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+       cursor: pointer;
+}

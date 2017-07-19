@@ -1,24 +1,20 @@
 <h3>Delete Recipe</h3>
-	<div class="col-sm-2" style="">
-		<!--Sidebar content-->
-		<!--<select [(ngModel)]="selectedId">
-                 <option *ngFor="#r of recipes" value="r.id">{{r.name}}</option>
-      </select>-->
-
-
-		<ul class="list-group">
-			<li (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item">{{recipe.name}}</li>
-		</ul>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="list-group">
+			<a (click)="onSelect(recipe)" *ngFor="let recipe of recipes" class="list-group-item"><img align="top" src="../assets/Forkandspoon.png">{{recipe.name}}</a>
+		</div>
 
 	</div>
-	<div class="col-md-10" style="">
+	<div class="col-md-9">
 		<!--Body content
       	<img src="../assets/chef2.jpg" height="300" width="300">-->
-		<div class="row btn-align-right">
+		<div class="row hairline">
 			<div class="col-xs-12">
 				<button type="button" class="btn btn-danger" (click)="onDelete()">Delete recipe</button>
 			</div>
 		</div>
+
 		<div class="media-left media-top">
 			<a href="#">
 				<img class="media-object" src={{recipe.imagePath}} height="300" width="300" alt="no burger picture">
@@ -30,4 +26,5 @@
 			<div [innerHTML]="recipe.description"></div>
 			<a (click)="goPrevious()">Previous</a><a class="pull-right" (click)="goNext()">Next</a>
 		</div>
-    </div>
+	</div>
+</div>

@@ -1,97 +1,91 @@
 <h3>Add recipe</h3>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<div class="margin-20">
-			</div>
-			<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-				<div class="form-group">
-					<input type="hidden" class="form-control" formControlName="id">
-				</div>
-				<div class="form-group">
-					<label>Name of your recipe</label>
-					<input type="text" class="form-control" formControlName="name">
-					<small *ngIf="formErrors.name" class="text-danger">
+<div class="row" style="margin-left: 5px">
+	<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+		<div class="form-group">
+			<input type="hidden" class="form-control" formControlName="id">
+		</div>
+		<div class="form-group">
+			<label>Name of your recipe</label>
+			<input type="text" class="form-control" formControlName="name">
+			<small *ngIf="formErrors.name" class="text-danger">
 						  {{ formErrors.name }}
           			</small>
-				</div>
-				<!--description-->
-				<div class="form-group">
-					<simple-tiny [elementId]="'my-editor-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
-					</simple-tiny>
-				</div>
-				<!--upload picture-->
-				<div class="form-group">
-					<label for="fileName" class="control-label">Add a picture of your recipe</label>
-					<input type="file" (change)="fileEvent($event)" class="form-control" ng2FileSelect [uploader]="uploader" />
-				</div>
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
-							<tr>
-								<th width="50%">File name</th>
-								<th>Size</th>
-								<th>Progress</th>
-								<th>Status</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of uploader.queue">
-								<td><strong>{{ item.file.name }}</strong></td>
-								<td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
-								<td>
-									<div class="progress" style="margin-bottom: 0;">
-										<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-									</div>
-								</td>
-								<td class="text-center">
-									<span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-									<span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-								</td>
-								<td nowrap>
-									<button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+		</div>
+		<!--description-->
+		<div class="form-group">
+			<simple-tiny [elementId]="'my-editor-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
+			</simple-tiny>
+		</div>
+		<!--upload picture-->
+		<div class="form-group">
+			<label for="fileName" class="control-label">Add a picture of your recipe</label>
+			<input type="file" (change)="fileEvent($event)" class="form-control" ng2FileSelect [uploader]="uploader" />
+		</div>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th width="50%">File name</th>
+						<th>Size</th>
+						<th>Progress</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of uploader.queue">
+						<td><strong>{{ item.file.name }}</strong></td>
+						<td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
+						<td>
+							<div class="progress" style="margin-bottom: 0;">
+								<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+							</div>
+						</td>
+						<td class="text-center">
+							<span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+							<span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+						</td>
+						<td nowrap>
+							<button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                                 <span class="glyphicon glyphicon-upload"></span> Upload
                             </button>
-									<button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+							<button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
                                 <span class="glyphicon glyphicon-trash"></span> Remove
                             </button>
-								</td>
-							</tr>
-							<tr>&nbsp;</tr>
-						</tbody>
-					</table>
+						</td>
+					</tr>
+					<tr>&nbsp;</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--ingredients-->
+		<div formArrayName="ingredients">
+			<div *ngFor="let ingredient of myForm.controls.ingredients.controls; let i=index" class="panel panel-default">
+				<div class="panel-heading">
+					<span>Add ingredient {{i + 1}}</span>
+					<span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
 				</div>
-				<!--ingredients-->
-				<div formArrayName="ingredients">
-					<div *ngFor="let ingredient of myForm.controls.ingredients.controls; let i=index" class="panel panel-default">
-						<div class="panel-heading">
-							<span>Add ingredient {{i + 1}}</span>
-							<span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
-						</div>
-						<div class="panel-body" [formGroupName]="i">
-							<ingredient [group]="myForm.controls.ingredients.controls[i]"></ingredient>
-						</div>
-					</div>
+				<div class="panel-body" [formGroupName]="i">
+					<ingredient [group]="myForm.controls.ingredients.controls[i]"></ingredient>
 				</div>
+			</div>
+		</div>
 
-				<div class="margin-20">
-					<a (click)="addIngredient()" style="cursor: default">
+		<div class="margin-20">
+			<a (click)="addIngredient()" style="cursor: default">
             			Add another ingredient +
           			</a>
-				</div>
+		</div>
 
-				<div class="margin-20">
-					<button type="submit" (click)="thisIsATest($event)" class="btn btn-primary pull-right" [disabled]="!myForm.valid">xSubmit</button>
-				</div>
-				<div class="clearfix"></div>
+		<div class="margin-20">
+			<button type="submit" (click)="thisIsATest($event)" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+		</div>
+		<div class="clearfix"></div>
 
-				<!-- <div class="margin-20">
+		<!-- <div class="margin-20">
 					<div>myForm details:-</div>
 					<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
 					<pre>form value: <br>{{myForm.value | json}}</pre>
 				</div> -->
-			</form>
-		</div>
-	</div>
+	</form>
 </div>
